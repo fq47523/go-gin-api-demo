@@ -1,0 +1,85 @@
+definitions:
+  models.Platforms:
+    properties:
+      name:
+        description: gorm.Model
+        type: string
+      vueDataID:
+        type: integer
+    type: object
+  models.VueData:
+    properties:
+      author:
+        type: string
+      comment_disabled:
+        type: boolean
+      content:
+        type: string
+      content_short:
+        type: string
+      display_time:
+        type: string
+      forecast:
+        type: number
+      image_uri:
+        type: string
+      importance:
+        type: integer
+      pageviews:
+        type: integer
+      platforms:
+        items:
+          $ref: '#/definitions/models.Platforms'
+        type: array
+      reviewer:
+        type: string
+      status:
+        type: string
+      timestamp:
+        description: gorm.Model
+        type: integer
+      title:
+        type: string
+      type:
+        type: string
+    type: object
+  vuedata.response:
+    properties:
+      code:
+        type: integer
+      data:
+        type: object
+    type: object
+host: 127.0.0.1:8081
+info:
+  contact:
+    email: ×××@qq.com
+    name: API Support
+    url: http://www.cnblogs.com
+  description: Golang api of demo
+  termsOfService: http://github.com
+  title: Golang Esign API
+  version: "1.0"
+paths:
+  /api/v1/release/template/add:
+    post:
+      description: 新增VueData
+      parameters:
+      - description: Bearer 31a165baebe6dec616b1f8f3207b4273
+        in: header
+        name: Authorization
+        required: true
+        type: string
+      - description: JSON数据
+        in: body
+        name: vue
+        required: true
+        schema:
+          $ref: '#/definitions/models.VueData'
+      responses:
+        "20000":
+          schema:
+            $ref: '#/definitions/vuedata.response'
+      tags:
+      - release template
+swagger: "2.0"
