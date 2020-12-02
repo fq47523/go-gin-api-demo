@@ -51,7 +51,7 @@ func main() {
 	// Set gin mode.
 	gin.SetMode(viper.GetString("runmode"))
 
-
+	// conn database
 	err := dao.InitSqlite()
 	if err != nil {
 		fmt.Printf("Init Sqlite failed, err:%v\n", err)
@@ -68,6 +68,7 @@ func main() {
 	)
 
 	/*
+	//  mock data
 	data,err := ioutil.ReadFile("mock/VueDataMock")  //这里返回的data是一个字节切片
 	if err!=nil{
 		fmt.Println("File reading error", err)
